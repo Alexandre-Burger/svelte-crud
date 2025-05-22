@@ -123,6 +123,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.TaskScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  description: 'description',
   completed: 'completed',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -136,6 +137,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 
