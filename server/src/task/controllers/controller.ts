@@ -25,7 +25,7 @@ const editTask = async (req: Request, res: Response) => {
   }
 
   try {
-    const { title, description } = req.body;
+    const { title, description, completed } = req.body;
 
     const task = await prisma.task.findUnique({
       where: {
@@ -38,16 +38,6 @@ const editTask = async (req: Request, res: Response) => {
       return;
     }
 
-    if (!title) {
-      res.status(400).json({ error: "Title is required" });
-      return;
-    }
-
-    if (task.title === title) {
-      res.status(400).json({ error: "Title is already in use" });
-      return;
-    }
-
     const updatedTask = await prisma.task.update({
       where: {
         id: Number(id),
@@ -55,6 +45,7 @@ const editTask = async (req: Request, res: Response) => {
       data: {
         title,
         description,
+        completed,
       },
     });
 
